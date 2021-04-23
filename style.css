@@ -1,0 +1,319 @@
+/* Setting global properties*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+#main {
+  font-family: Poppins;
+  color: #f3f3f3;
+  padding: 50px 10px 0px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*if background img fails to load*/
+  background-color: #ccc;
+  /*setting 2 background imgs, 1st one is nearer to viewer*/
+  background-image: linear-gradient(
+      115deg,
+      rgba(58, 58, 158, 0.8),
+      rgba(136, 136, 206, 0.7)
+    ),
+    url(https://cdn.freecodecamp.org/testable-projects-fcc/images/survey-form-background.jpeg);
+  background-repeat: norepeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  --color-darkblue: rgba(27, 27, 50, 0.8);
+}
+
+/*placeholders need to be styled in this way, can't be styled using input element selector, but for select element-since its placeholder is its disabled option only, it can be styled using select element. Setting placeholder style properties for input and text area elements but not for select element.*/
+
+::placeholder {
+  font-size: 16px;
+  line-height: 24px;
+  color: #757575;
+  font-family: Poppins;
+}
+
+/* textarea's placeholder needs extra padding*/
+textarea::placeholder {
+  padding: 5px;
+}
+
+/* Main heading of page*/
+
+#header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#title {
+  font-size: 32px;
+  line-height: 38.4px;
+}
+
+#description {
+  font-style: italic;
+  font-weight: lighter;
+  padding: 10px 0px 10px 0px;
+  font-size: 18px;
+}
+
+/* Form starts*/
+.form-font {
+  font-size: 18px;
+  line-height: 25.2px;
+}
+
+.form-brackets-font {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 100;
+}
+
+#survey-form {
+  background-color: var(--color-darkblue);
+  width: 720px;
+  padding: 40px;
+}
+
+.input-area {
+  width: 100%;
+  height: 40px;
+  border-radius: 7px;
+  padding: 5px 10px;
+  margin-bottom: 25px;
+  /*for select's option placeholder*/
+  font-family: Poppins;
+  /*default font-size when user writes is small, so making it same as placeholder
+    size and color*/
+  font-size: 16px;
+  line-height: 24px;
+  color: #757575;
+  /*default bc for select not white*/
+  background: white;
+}
+
+/*setting font ppts for options*/
+.input-area option {
+  font-size: 16px;
+  line-height: 24px;
+  /*adding padding to wont work: padding-top: 5px;
+    padding-bottom: 5px;*/
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+#dropdown:focus,
+#dropdown-2:focus,
+textarea:focus {
+  border: 2px solid #80bdff;
+  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+  outline: 0px; /*shorthand for outline width, style, etc*/
+}
+
+/*not styling using input-area class as need different height */
+form textarea {
+  width: 100%;
+  height: 120px;
+  margin-bottom: 30px;
+  font-size: 16px;
+  line-height: 24px;
+  color: #757575;
+}
+
+input[type="number"]:invalid,
+input[type="email"]:invalid {
+  color: red;
+}
+
+#submit {
+  width: 100%;
+  height: 45px;
+  text-align: center;
+  background: #37af65;
+  color: inherit;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.label-block-margin-bottom {
+  display: block;
+  margin-bottom: 7px;
+}
+
+/* using custom radio css from codepen account*/
+
+.container {
+  /*block is making label to occupy whole width, not like its default width only occupying space of its content only- so to select radio button , select anyhwhere in the line*/
+  display: block;
+  line-height: 26.4px;
+  padding-left: 35px;
+  margin-bottom: 10px;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+.container input {
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  height: 22px;
+  width: 22px;
+  position: absolute;
+  background-color: #eee;
+  border-radius: 50%;
+  left: 0;
+  top: 0;
+}
+
+.checkmark:hover {
+  background: #ccc;
+}
+
+.container input:checked ~ .checkmark {
+  background: #2196f3;
+}
+
+.checkmark::after {
+  content: "";
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  position: absolute;
+  background: #fff;
+  top: 7px;
+  left: 7px;
+  /*created inner white dot, now need to hide it*/
+  visibility: hidden;
+}
+
+/*now whenever a radio button is checked need to display that white dot*/
+
+.container input:checked ~ .checkmark::after {
+  visibility: visible;
+}
+
+#a::after {
+  content: "";
+  height: 10px;
+  width: 10px;
+  position: absolute;
+  background: red;
+}
+
+#radio-legend-margin-bottom {
+  margin-bottom: 10px;
+}
+
+.fieldset-margin-bottom {
+  margin-bottom: 15px;
+}
+
+/*custom checkbox form codepen account*/
+
+.container-1 {
+  display: block;
+  line-height: 26.4px;
+  padding-left: 35px;
+  margin-bottom: 10px;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container-1 input {
+  opacity: 0;
+  cursor: pointer;
+}
+
+/*creating custom checkbox*/
+.checkmark-1 {
+  background: #eee;
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 0;
+  top: 0;
+}
+
+/* On mouse-over, add a grey background color */
+.container-1:hover .checkmark-1 {
+  background: #ccc;
+}
+/* When the checkbox is checked, add a blue background */
+.container-1 input:checked ~ .checkmark-1 {
+  background: #2196f3;
+}
+
+/*creating the base for inner white tick mark*/
+.checkmark-1::after {
+  content: "";
+  height: 5px;
+  width: 12px;
+  /*use dipsplay block or position absolute are same things*/
+  position: absolute;
+  top: 6px;
+  left: 5px;
+  border-style: solid;
+  border-color: white;
+  border-width: 0px 0px 3px 3px;
+  /*no need to specify background color as by default it is transparent*/
+  transform: rotate(-45deg);
+  /*no need to show when none is checked*/
+  visibility: hidden;
+}
+
+/* Show the checkmark when checked */
+.container-1 input:checked ~ .checkmark-1::after {
+  visibility: visible;
+}
+
+/*media queries*/
+
+@media (max-width: 767px) {
+  form#survey-form {
+    width: 550px;
+  }
+}
+
+@media (max-width: 575px) {
+  div#main {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  form#survey-form {
+    width: 100%;
+  }
+
+  div#header p#description {
+    margin: 0px 10px;
+  }
+}
+
+@media (max-width: 490px) {
+  div#header h1#title {
+    margin: 0px 10px;
+  }
+}
+
+@media (max-width: 479px) {
+  form#survey-form {
+    padding-left: 13px;
+    padding-right: 13px;
+  }
+}
